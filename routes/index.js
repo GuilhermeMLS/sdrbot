@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 
   sdrbot.sdrmain(function(data) {
     res.render('index', {
-      data: data
+      data
     });
   });
 
