@@ -1,39 +1,18 @@
 var express = require('express');
 var router = express.Router();
 
-const sdrbot = require("./sdrbot.js");
+const sdrbot = require('./sdrbot');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  // var data = sdrbot.sdrmain();
+  var s = "ebanx.com.br";
+  if (req.query.site) {
+    s = req.query.site;
+  }
+  sdrbot({ domain: s }).then(function (data) {
+      res.render('index', { data });
+  })
 
-  sdrbot.sdrmain(function(data) {
-    res.render('index', {
-      data
-    });
-  });
-
-  
-  // var t = "SDRBot Alpha 1.1";
-  // var s = "www.ebanx.com";
-  // if (req.query.site) {
-  //   s = req.query.site;
-  // }
-
-  // sdrbot.sdrmain().then(res.render('index'),{
-  //   title: t,
-  //   site: s
-  // });
-
-  
-
-  
-
-  // res.render('index', { 
-  //   title: t,
-  //   site: s,
-  //   data: data
-  // });
 });
 
 module.exports = router;
