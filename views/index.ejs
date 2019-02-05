@@ -8,21 +8,17 @@
   <link rel="stylesheet" href="stylesheets/style.css">
 </head>
 <body>
-  <h1>SDRBot Alpha 1.2</h1>
-  <p></p>
-  <br>
-  <h2><%= data.name %></h2>
-  <p><b>Atividade principal:</b> <%= data.main_activity %></p>
-  <p><b>CNAE:</b> <%= data.code_activity %></p>
-  <p><b>CNPJ:</b> <%= data.cnpj %></p>
-  <p><b>Capital Social:</b> R$ <%= data.social_capital %></p>
-  <p><b>Telefone:</b> <%= data.phone %></p>
-  <p><b>E-mail:</b> <%= data.email %></p>
-  <p><b>Quadro societário:</b></p>
-  <ul>
-  <% for(var i=0; i<data.qsa.length; i++) {%>
-    <li><%= data.qsa[i].nome %> (<%= data.qsa[i].qual%>) -- <%= data.qsa[i].count_cnpj %> CPJs</li>
-  <% } %>
-  </ul>
+  <center>
+    <h1>SDRBot Alpha 1.3</h1>
+    <p style="color:darkgray"> Insira o site da empresa sem "www"</p>
+    <input type="text" id="searchbox" placeholder="example.com">
+    <button onclick="submit()">Procurar</button>
+  </center>
 </body>
+<script>
+    function submit(){
+      $val = document.getElementById("searchbox").value;
+      window.location = "/search?site="+$val;
+    }
+</script>
 </html>

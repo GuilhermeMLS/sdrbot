@@ -15,4 +15,15 @@ router.get('/', function(req, res, next) {
 
 });
 
+router.get('/search', function(req, res, next) {
+  var s = "ebanx.com.br";
+  if (req.query.site) {
+    s = req.query.site;
+  }
+  sdrbot({ domain: s }).then(function (data) {
+      res.render('search', { data });
+  })
+
+});
+
 module.exports = router;
